@@ -1,2 +1,8 @@
 # Prog3
 CS 1300 Programming Assignment 3
+
+Part 1 (40pts): FaceSpace.  You are to develop code to build and save a facespace (eigenface vectors). You are to have a function that takes a filename, where that file contains a list of image file names (as text), it then  iterates through the named files and builds the original matrix of faces.   You are to have a function to normalize the images (subtract mean).  You are to have a function to take in a parameter N, and  to build the facespace with the top N eigenvectors and save the face-space to a file.  Show the top 8 eigenfaces as images in your documentation.  There should also be a function to compute the face-space coefficients of each subject and save those coefficients in a text file called gallery.txt (one file for all subject coefficient's).  
+
+Part 2 (20pts): Face recognition.    Have a function/script that reads a list of test images, computes the face-space coefficients and compares it with the pre-saved gallery.txt file  and output a text file providing the list of top 3 identities for each test image.   Compute your rank 1 and rank 3 recognition rate -- (i.e. how often was the "top 1" answer correct and how often was the correct person in the top 3.)
+
+Part 3 (30pts): Face reconstruction.   Have a function/script that, uses your face space, and a file of test samples,  compute the coefficients for the subjects in the test file and then  compute the mean square error for different at least 5 different face space sizes. Do a plot of Mean-square-error as a function of size of face space (number of eigenfaces)  The documentation should show two sets of reconstruction images, the best and the worst,  to explain what the plot is showing. 
