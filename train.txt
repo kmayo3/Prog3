@@ -79,7 +79,6 @@ Tiger_Woods_0001.jpg
 Tiger_Woods_0002.jpg
 Timothy_McVeigh_0001.jpg
 Tom_Osborne_0001.jpg
-train.txt
 Uday_Hussein_0001.jpg
 Vivica_Fox_0001.jpg
 Vivica_Fox_0002.jpg
