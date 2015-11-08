@@ -3,7 +3,7 @@ clc
 clear all
 clf
 
-%%pkg load image;
+pkg load image;
 %%file_name = "train.txt";
 
 %%fileID = fopen(file_name, 'r');
@@ -21,7 +21,7 @@ clf
 %%endfor
 
 % number of images on your training set.
-M=88;
+M=66;
 
 % Chosen std and mean.
 % It can be any number that it is close to the std and mean of most of the images.
@@ -32,8 +32,8 @@ ustd=80;
 S=[];    % img matrix
 figure(1);
 
-for i=1:M
-str=strcat(int2str(i),'.txt');    % concatenates two strings that form the name of the image
+for i='C:/Users/Maegen/Documents/cs 1300/Train.jpg':M
+str=strcat(int2str(i),'.jpg');    % concatenates two strings that form the name of the image
 eval('img=imread(str);');
 subplot(ceil(sqrt(M)),ceil(sqrt(M)),i)
 imshow(img)
@@ -154,12 +154,13 @@ end
 
 % show eigenfaces
 %%figure(4);
-for i=1:size(u,2)
+u = u * u;
+for i=1:n
 img=reshape(u(:,i),icol,irow);
 img=img';
 img=histeq(img,255);
 figure(i);
-subplot(ceil(sqrt(M)),ceil(sqrt(M)),i)
+#subplot(ceil(sqrt(r)),ceil(sqrt(r)),i)
 imshow(img)
 drawnow;
 
@@ -189,7 +190,7 @@ end
 % Note: the input image must have a bmp or jpg extension.
 % It should have the same size as the ones in your training set.
 % It should be placed on your desktop
-InputImage = imread('C:/Users/Maegen/Documents/cs1300\train.txt);
+InputImage = imread('C:/Users/Maegen/Documents/cs1300\train.txt');
 figure(5)
 subplot(1,2,1)
 imshow(InputImage); colormap('gray');title('Input image','fontsize',18)
