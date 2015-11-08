@@ -3,22 +3,22 @@ clc
 clear all
 clf
 
-pkg load image;
-file_name = "train.txt";
+%%pkg load image;
+%%file_name = "train.txt";
 
-fileID = fopen(file_name, 'r');
-faces = fscanf(fileID, "%s");
-fclose(fileID);
+%%fileID = fopen(file_name, 'r');
+%%faces = fscanf(fileID, "%c");
+%%fclose(fileID);
 
-r = rows(faces);
+%%r = rows(faces);
 
-person(:,:) = "";
+%%person(:,:) = "";
 
-for i = 1:r
-face = imread(char(faces(i)));
-face = reshape(face, prod(size(face)), 1);
-person(:,1) = face;
-endfor
+%%for i = 1:r
+%%face = imread(char(faces(i)));
+%%face = reshape(face, prod(size(face)), 1);
+%%person(:,1) = face;
+%%endfor
 
 % number of images on your training set.
 M=88;
@@ -33,7 +33,7 @@ S=[];    % img matrix
 figure(1);
 
 for i=1:M
-str=strcat(int2str(i),'.bmp');    % concatenates two strings that form the name of the image
+str=strcat(int2str(i),'.txt');    % concatenates two strings that form the name of the image
 eval('img=imread(str);');
 subplot(ceil(sqrt(M)),ceil(sqrt(M)),i)
 imshow(img)
@@ -62,7 +62,7 @@ end
 figure(2);
 
 for i=1:M
-str=strcat(int2str(i),'.bmp');
+str=strcat(int2str(i),'.jpeg');
 img=reshape(S(:,i),icol,irow);
 img=img';
 eval('imwrite(img,str)');
@@ -189,8 +189,7 @@ end
 % Note: the input image must have a bmp or jpg extension.
 % It should have the same size as the ones in your training set.
 % It should be placed on your desktop
-InputImage = input('Please enter the name of the image and its extension \n','s');
-InputImage = imread(strcat('D:\Documents and Settings\sis26\Desktop\',InputImage));
+InputImage = imread('C:/Users/Maegen/Documents/cs1300\train.txt);
 figure(5)
 subplot(1,2,1)
 imshow(InputImage); colormap('gray');title('Input image','fontsize',18)
