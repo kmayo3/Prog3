@@ -31,7 +31,6 @@ ustd=80;
 % read and show image
 S=[];    % img matrix
 figure(1);
-
 for i='C:/Users/Maegen/Documents/cs 1300/Train.jpg':M
 str=strcat(int2str(i),'.jpg');    % concatenates two strings that form the name of the image
 eval('img=imread(str);');
