@@ -4,23 +4,26 @@ pkg load image;
 file_name = 'train.txt';
 
 fileID = fopen(file_name, 'r');
-faces = flist = textread(file_name, "%s");
+faces = textread(file_name, "%s");
 fclose(fileID);
 r = rows(faces);
 person(:,:)="";
 
-for i = 1;
-C =[];
-%%imagesc(faces);
-T = imagesc(char(faces(i)));
+for i = 1:r;
 
-%reshape into vectorize
+%%X = 
+%%imagesc(X);
+%%[m n] =size(faces);
+%%img = file_name;
+T = imread(strcat('train./',char(faces(i)))); 
+
+%reshape into matrix
 B = imagesc(reshape(T, 250,250));
-colormap('grey');
+colormap('gray');
 
 %append to training
 
-person(:,i) = T;
+%%person(:,i) = T;
 endfor
 %define average
 Average = mean(B, 2);
@@ -33,8 +36,8 @@ imshow(Average);
 %%N = cov (x) = 1/N-1 * SUM_i (x(i) - mean(x)) * (y(i) - mean(y));
 
 %compute a pca 
-mu = mean(X,2);
-Xm = bsxfun(@minus,double (X), mu);
+mu = mean(B,2);
+Xm = bsxfun(@minus,double (B), mu);
 C = cov(Xm);
 [V,D] = eig(C);
 
