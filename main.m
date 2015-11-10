@@ -50,11 +50,15 @@ imshow(Average);
 %compute covariance
 %cov = x*y'
 %%N = cov (x) = 1/N-1 * SUM_i (x(i) - mean(x)) * (y(i) - mean(y));
+C = B' * B;
+E = eigs(C);
+F = B * B';
+G = eigs(F);
 
 %compute a pca 
 mu = mean(B,2);
 Xm = bsxfun(@minus,double (B), mu);
-C = cov(Xm);
+%%C = cov(Xm);
 [V,D] = eig(C);
 
 % sort eigenvectors descend
