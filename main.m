@@ -51,7 +51,8 @@ imshow(Average);
 %cov = x*y'
 %%N = cov (x) = 1/N-1 * SUM_i (x(i) - mean(x)) * (y(i) - mean(y));
 C = B' * B;
-E = eigs(C);
+[L,V] = eig(C);
+[L,V] = eigs(C,r);
 F = B * B';
 G = eigs(F);
 
