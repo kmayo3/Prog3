@@ -40,30 +40,35 @@ colormap('gray');
 endfor
 
 
-%define average
+%% define average
 Average = mean(B, 2);
 imshow(Average);
 drawnow;
-%compute covariance
-% Change image for manipulation
+
+%% compute covariance
+%% Change image for manipulation
 covm=[];  % A matrix
 
-%Covariance matrix C=A'A, L=AA'
+%% Covariance matrix C=A'A, L=AA'
 A=covm';
 L=A*A';
 
-% vv are the eigenvector for L
-% dd are the eigenvalue for both L and A
+%% vv are the eigenvector for L
+%% dd are the eigenvalue for both L and A
 [vv dd]=eigs(L);
 
-% Sort and eliminate those whose eigenvalue is zero
+%% Sort and eliminate those whose eigenvalue is zero
 v=[];
 d=[];
 
+%%
 for i=1:size(vv,2)
+
+%5
 if(dd(i,i)>1e-4)
 v=[v vv(:,i)];
 d=[d dd(i,i)];
+
 end
 endfor
 
@@ -71,5 +76,3 @@ endfor
 mu = mean(B,2);
 Xm = bsxfun(@minus,double (B), mu);
 %%C = cov(Xm);
-
-
