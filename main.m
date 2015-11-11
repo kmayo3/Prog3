@@ -43,26 +43,33 @@ endfor
 %define average
 Average = mean(B, 2);
 imshow(Average);
-
-%%mean = (average/ n-1);
-%%average = mean(A, 'r');
- 
+drawnow;
 %compute covariance
-%cov = x*y'
-%%N = cov (x) = 1/N-1 * SUM_i (x(i) - mean(x)) * (y(i) - mean(y));
-C = B' * B;
-[L,V] = eig(C);
-[L,V] = eigs(C,r);
-F = B * B';
-G = eigs(F);
+% Change image for manipulation
+covm=[];  % A matrix
+
+%Covariance matrix C=A'A, L=AA'
+A=covm';
+L=A*A';
+
+% vv are the eigenvector for L
+% dd are the eigenvalue for both L and A
+[vv dd]=eigs(L);
+
+% Sort and eliminate those whose eigenvalue is zero
+v=[];
+d=[];
+
+for i=1:size(vv,2)
+if(dd(i,i)>1e-4)
+v=[v vv(:,i)];
+d=[d dd(i,i)];
+end
+endfor
 
 %compute a pca 
 mu = mean(B,2);
 Xm = bsxfun(@minus,double (B), mu);
 %%C = cov(Xm);
-[V,D] = eig(C);
 
-% sort eigenvectors descend
-[D, i] = sort(diag(D), 'descend');
-V = V(:,i);
 
