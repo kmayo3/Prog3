@@ -27,7 +27,7 @@ person(:,:)= "";
 %% for loop which starts at first image of row
 for i = 1:r;
 
-%% Append images
+%% append images
 T = imread(strcat('train./',char(faces(i)))); 
 
 %% reshape into matrix
@@ -46,7 +46,7 @@ imshow(Average);
 drawnow;
 
 %% compute covariance
-%% Change image for manipulation
+%% change image for manipulation
 covm=[];  % A matrix
 
 %% Covariance matrix C=A'A, L=AA'
@@ -61,14 +61,15 @@ L=A*A';
 v=[];
 d=[];
 
-%%
+%% if the vectors are greater than 0 then it will store them
 for i=1:size(vv,2)
 
-%5
+%% 
 if(dd(i,i)>1e-4)
 v=[v vv(:,i)];
 d=[d dd(i,i)];
 
+%% end the loops
 end
 endfor
 
