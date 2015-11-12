@@ -21,9 +21,6 @@ fclose(fileID);
 %% set r to the rows of the name
 r = rows(faces);
 
-%% reads the whitespace
-person(:,:)= "";
-
 %% for loop which starts at first image of row
 for i = 1:r;
 
@@ -41,39 +38,26 @@ endfor
 
 
 %% define average
-Average = mean(B, 2);
+Average = mean(T,2);
 imshow(Average);
 drawnow;
 
-%% compute covariance
-%% change image for manipulation
-covm=[];  % A matrix
-
-%% Covariance matrix C=A'A, L=AA'
-A=covm';
+%%generate the eigenvectors and store them  
+%% Covariance matrix A=covm', L=AA'
+%%I2 converts image to double precision 
+I2 = im2double(T);
+A=(I2'*I2);
 L=A*A';
+Covm = [A, L];
+imshow(Covm);
 
-%% vv are the eigenvector for L
-%% dd are the eigenvalue for both L and A
-[vv dd]=eigs(L);
+%%get eigenvectors of A and L and store into matrix Z
+h = eigs(A);
+j = eigs(L);
 
-%% Sort and eliminate those whose eigenvalue is zero
-v=[];
-d=[];
+Z = [h, j];
+imshow(Z);
 
-%% if the vectors are greater than 0 then it will store them
-for i=1:size(vv,2)
-
-%% 
-if(dd(i,i)>1e-4)
-v=[v vv(:,i)];
-d=[d dd(i,i)];
-
-%% end the loops
-end
-endfor
 
 %compute a pca 
-mu = mean(B,2);
-Xm = bsxfun(@minus,double (B), mu);
-%%C = cov(Xm);
+X = bsxfun(@minus,double (T), Average);
